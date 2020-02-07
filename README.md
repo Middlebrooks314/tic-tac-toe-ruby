@@ -17,11 +17,6 @@ ruby bin/run.rb
 ```bash
 rspec <ruby_test_file>_spec.rb
 ```
-
-**explain what is being tested and an example.
-https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
-(format recommendation)
-
  
 ## Contributing
 
