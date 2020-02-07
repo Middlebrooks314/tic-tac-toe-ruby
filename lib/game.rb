@@ -4,4 +4,3 @@ class Game
         puts 'Hello, welcome to Tic Tac Toe.'
     end
 end
-
