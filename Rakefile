@@ -1,4 +1,5 @@
-# frozen_string_literal: true
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new
 
 task default: %w[test]
 
@@ -8,6 +9,6 @@ end
 
 task test: :rubocop
 
-task :rubocop do
-  sh 'rubocop'
-end
+# task :rubocop do
+#   sh 'rubocop'
+# end
