@@ -8,7 +8,3 @@ task :test do
 end
 
 task test: :rubocop
-
-# task :rubocop do
-#   sh 'rubocop'
-# end
