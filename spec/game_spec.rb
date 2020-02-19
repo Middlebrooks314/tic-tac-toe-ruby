@@ -21,7 +21,7 @@ describe Game, type: 'class' do
     end
 
     it 'prints a board with an X in the center position' do
-      board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      board = [' ', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ']
 
       game = Game.new
 
@@ -123,7 +123,7 @@ describe Game, type: 'class' do
     end
 
     it 'prints a full board with X values' do
-      board = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', '']
+      board = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
 
       game = Game.new
 
