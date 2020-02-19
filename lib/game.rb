@@ -3,7 +3,7 @@ class Game
     puts 'Hello, welcome to Tic Tac Toe.'
   end
 
-  def display_board
+  def display_board(board)
     puts '   |   |   '
     puts '-----------'
     puts '   |   |   '
