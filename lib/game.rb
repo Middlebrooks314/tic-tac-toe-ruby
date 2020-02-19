@@ -15,6 +15,10 @@ class Game
   def turn
     puts 'Please enter a number 1-9'
     user_input = gets.strip
-    puts user_input
+    input_to_index(user_input)
+  end
+
+  def input_to_index(user_input)
+    user_input.to_i - 1
   end
 end
