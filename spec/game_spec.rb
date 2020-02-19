@@ -148,4 +148,16 @@ describe Game, type: 'class' do
       expect {game.display_board(board)}.to output(expected_output).to_stdout
     end
   end
+
+  describe '#turn' do
+    it 'receives user input' do
+
+      game = Game.new
+
+      allow($stdout).to receive(:puts)
+      expect(game).to receive(:gets).and_return('1')
+
+      game.turn
+    end
+  end
 end
