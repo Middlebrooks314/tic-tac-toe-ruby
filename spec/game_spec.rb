@@ -7,7 +7,7 @@ describe Game, type: 'class' do
   end
 
   describe '#display_board' do
-    it 'prints a blank board when the board array is empty' do
+    it 'prints a blank board when the board array contains only empty strings' do
       board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
       game = Game.new
