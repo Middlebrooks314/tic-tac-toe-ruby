@@ -21,16 +21,21 @@ describe Game, type: 'class' do
         expected_output += "   |   |   \n"
 
         expect{game.display_board(board)}.to output(expected_output).to_stdout
+      end
+
+      it "prints a board with a character in the center position" do
+      game = Game.new
+      board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
+
+      expected_output  = "   |   |   \n"
+      expected_output += "-----------\n"
+      expected_output += "   | X |   \n"
+      expected_output += "-----------\n"
+      expected_output += "   |   |   \n"
+
+      expect{game.display_board(board)}.to output(expected_output).to_stdout
+
     end
 
-    # it 'prints a 3x3 tic tac toe board' do
-    #     game = Game.new
-    #     expected_output = "   |   |   \n"
-    #     expected_output += "-----------\n"
-    #     expected_output += "   |   |   \n"
-    #     expected_output += "-----------\n"
-    #     expected_output += "   |   |   \n"
-    #     expect {game.display_board}.to output(expected_output).to_stdout
-    # end
   end
 end
