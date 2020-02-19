@@ -1,3 +1,3 @@
 def foo
-    'foo'
+  'foo'
 end
