@@ -155,7 +155,7 @@ describe Game, type: 'class' do
   end
 
   describe '#mark_board' do
-    it 'receives user input' do
+    it 'will mark the board with an X at the the board[2]' do
 
       game = Game.new
       game.mark_board(2, 'X')
@@ -166,19 +166,37 @@ describe Game, type: 'class' do
     end
   end
 
-  describe 'input_to_index' do
-    it 'turns a user input of 5 into an array index of 4(n-1)' do
+  describe '#input_to_index' do
+    it 'will return 4 as the array index when a user inputs 5' do
 
       game = Game.new
 
       expect(game.input_to_index(5)).to eq(4)
     end
 
-    it 'turns a user input of 1 into an array index 0 (n-1)' do
+    it 'will return 0 as the array index when a user inputs 1' do
 
-      game = Game.new\
+      game = Game.new
 
       expect(game.input_to_index(1)).to eq(0)
+    end
+  end
+
+  describe '#position_taken?' do
+    it 'will return false when an index of 4 is entered' do
+
+      game = Game.new
+      game.instance_variable_set(:@board, [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'O', 'X'])
+
+      expect(game.position_taken?(4)).to eq(false)
+    end
+
+    it 'will return true when an index of 8 is entered' do
+
+      game = Game.new
+      game.instance_variable_set(:@board, [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'O', 'X'])
+
+      expect(game.position_taken?(8)).to eq(true)
     end
   end
 end
