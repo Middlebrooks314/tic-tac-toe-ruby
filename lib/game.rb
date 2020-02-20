@@ -5,7 +5,7 @@ class Game
 
   def welcome
     puts 'Hello, welcome to Tic Tac Toe.'
-    display_board
+    move
   end
 
   def display_board
@@ -16,13 +16,23 @@ class Game
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
-  def turn
+  def move
+    display_board
+    index = input_to_index(retrieve_user_input)
+    mark_board(index)
+    display_board
+  end
+
+  def retrieve_user_input
     puts 'Please enter a number 1-9'
-    user_input = gets.strip
-    input_to_index(user_input)
+    gets.strip
   end
 
   def input_to_index(user_input)
     user_input.to_i - 1
+  end
+
+  def mark_board(index, char = 'X')
+    @board[index] = char
   end
 end
