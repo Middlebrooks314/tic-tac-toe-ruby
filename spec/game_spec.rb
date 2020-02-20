@@ -154,15 +154,31 @@ describe Game, type: 'class' do
     end
   end
 
-  describe '#move' do
+  describe '#mark_board' do
     it 'receives user input' do
 
       game = Game.new
+      game.mark_board(2, 'X')
 
-      allow($stdout).to receive(:puts)
-      expect(game).to receive(:gets).and_return('1')
+      board = game.instance_variable_get(:@board)
 
-      game.move
+      expect(board).to eq([' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ', ' '])
+    end
+  end
+
+  describe 'input_to_index' do
+    it 'turns a user input of 5 into an array index of 4(n-1)' do
+
+      game = Game.new
+
+      expect(game.input_to_index(5)).to eq(4)
+    end
+
+    it 'turns a user input of 1 into an array index 0 (n-1)' do
+
+      game = Game.new\
+
+      expect(game.input_to_index(1)).to eq(0)
     end
   end
 end
