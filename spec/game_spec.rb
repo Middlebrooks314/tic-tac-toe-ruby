@@ -6,6 +6,13 @@ describe Game, type: 'class' do
     expect { Game }.not_to raise_error(NameError)
   end
 
+  describe 'initialize' do
+    it 'assigns an instance variable @board to an array with 9 empty strings' do
+      game = Game.new
+      expect(game.instance_variable_get(:@board)).to eq([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+    end
+  end
+
   describe '#display_board' do
     it 'prints a blank board when the board array contains only empty strings' do
       board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
