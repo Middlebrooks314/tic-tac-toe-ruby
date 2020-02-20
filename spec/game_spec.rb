@@ -7,14 +7,14 @@ describe Game, type: 'class' do
   end
 
   describe 'initialize' do
-    it 'assigns an instance variable @board to an array with 9 empty strings' do
+    it 'will assign an instance variable @board to an array with 9 empty strings' do
       game = Game.new
       expect(game.instance_variable_get(:@board)).to eq([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
     end
   end
 
   describe '#display_board' do
-    it 'prints a blank board when the board array contains only empty strings' do
+    it 'will print a blank board when the board array contains only empty strings' do
 
       game = Game.new
 
@@ -26,7 +26,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a board with an X in the center position' do
+    it 'will print a board with an X in the center position' do
 
       game = Game.new
       game.instance_variable_set(:@board, [' ', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' '])
@@ -39,7 +39,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a board with an O in the corner position' do
+    it 'will print a board with an O in the corner position' do
 
       game = Game.new
       game.instance_variable_set(:@board, ['O', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
@@ -52,7 +52,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a board with O winning across the top row' do
+    it 'will print a board with O winning across the top row' do
 
       game = Game.new
       game.instance_variable_set(:@board, ['O', 'O', 'O', ' ', ' ', ' ', ' ', ' ', ' '])
@@ -65,7 +65,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a board with X winning across the bottom row' do
+    it 'will print a board with X winning across the bottom row' do
 
       game = Game.new
       game.instance_variable_set(:@board, [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'X', 'X'])
@@ -78,7 +78,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a board with X winning on the right to left upwards diagonal' do
+    it 'will print a board with X winning on the right to left upwards diagonal' do
 
       game = Game.new
       game.instance_variable_set(:@board, [' ', ' ', 'X', ' ', 'X', ' ', 'X', ' ', ' '])
@@ -91,7 +91,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a board with O winning on the right to left downwards diagonal' do
+    it 'will print a board with O winning on the right to left downwards diagonal' do
 
       game = Game.new
       game.instance_variable_set(:@board, ['O', ' ', ' ', ' ', 'O', ' ', ' ', ' ', 'O'])
@@ -104,7 +104,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a full board with arbitrary X and O values' do
+    it 'will print a full board with arbitrary X and O values' do
 
       game = Game.new
       game.instance_variable_set(:@board, ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'X', 'O'])
@@ -127,7 +127,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a full board with X values' do
+    it 'will print a full board with X values' do
 
       game = Game.new
       game.instance_variable_set(:@board, ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'])
@@ -140,7 +140,7 @@ describe Game, type: 'class' do
       expect {game.display_board}.to output(expected_output).to_stdout
     end
 
-    it 'prints a full board with O values' do
+    it 'will print a full board with O values' do
 
       game = Game.new
       game.instance_variable_set(:@board, ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'])
@@ -199,4 +199,63 @@ describe Game, type: 'class' do
       expect(game.position_taken?(8)).to eq(true)
     end
   end
+
+  # describe '#retrieve_user_input' do
+
+  # end
+
+  describe '#valid_move?' do
+    it 'will return true for an of index 4' do
+
+      game = Game.new
+      game.instance_variable_set(:@board, [' ', 'X', ' ', ' ', ' ', ' ', 'X', ' ', 'X'])
+
+      expect(game.valid_move?(4)).to eq(true)
+    end
+
+    it 'will return false for an of index 6' do
+
+      game = Game.new
+      game.instance_variable_set(:@board, [' ', 'X', ' ', ' ', ' ', ' ', 'X', ' ', 'X'])
+
+      expect(game.valid_move?(6)).to eq(false)
+    end
+  end
+
+  describe '#mark_board' do
+    it 'will mark the board with an X at 4th index' do
+
+      game = Game.new
+
+      game.mark_board(4)
+
+      board = game.instance_variable_get(:@board)
+
+      expect(board).to eq([' ', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' '])
+    end
+
+    it 'will mark the board with an O at 6th index' do
+
+      game = Game.new
+      game.instance_variable_set(:@board, [' ', 'X', ' ', ' ', ' ', ' ', 'X', ' ', 'X'])
+
+      game.mark_board(4, 'O')
+
+      board = game.instance_variable_get(:@board)
+
+      expect(board).to eq([' ', 'X', ' ', ' ', 'O', ' ', 'X', ' ', 'X'])
+    end
+  end
+
+  # describe '#improper_move' do
+
+
+  # end
+
+  # describe '#move' do
+
+
+  # end
+
+
 end
