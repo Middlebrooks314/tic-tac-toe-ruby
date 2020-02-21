@@ -3,12 +3,14 @@ require_relative '../lib/game'
 
 describe Game, type: 'class' do
   it('is valid with valid attributes') do
+
     expect { Game }.not_to raise_error(NameError)
   end
 
   describe 'initialize' do
     it 'will assign an instance variable @board to an array with 9 empty strings' do
       game = Game.new
+
       expect(game.instance_variable_get(:@board)).to eq([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
     end
   end
@@ -128,7 +130,6 @@ describe Game, type: 'class' do
     end
 
     it 'will print a full board with X values' do
-
       game = Game.new
       game.instance_variable_set(:@board, ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'])
 
@@ -141,7 +142,6 @@ describe Game, type: 'class' do
     end
 
     it 'will print a full board with O values' do
-
       game = Game.new
       game.instance_variable_set(:@board, ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'])
 
@@ -156,7 +156,6 @@ describe Game, type: 'class' do
 
   describe '#mark_board' do
     it 'will mark the board with an X at the the board[2]' do
-
       game = Game.new
       game.mark_board(2, 'X')
 
@@ -168,14 +167,12 @@ describe Game, type: 'class' do
 
   describe '#input_to_index' do
     it 'will return 4 as the array index when a user inputs 5' do
-
       game = Game.new
 
       expect(game.input_to_index(5)).to eq(4)
     end
 
     it 'will return 0 as the array index when a user inputs 1' do
-
       game = Game.new
 
       expect(game.input_to_index(1)).to eq(0)
@@ -184,7 +181,6 @@ describe Game, type: 'class' do
 
   describe '#position_taken?' do
     it 'will return false when an index of 4 is entered' do
-
       game = Game.new
       game.instance_variable_set(:@board, [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'O', 'X'])
 
@@ -192,7 +188,6 @@ describe Game, type: 'class' do
     end
 
     it 'will return true when an index of 8 is entered' do
-
       game = Game.new
       game.instance_variable_set(:@board, [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'O', 'X'])
 
@@ -200,31 +195,8 @@ describe Game, type: 'class' do
     end
   end
 
-  # describe '#retrieve_user_input' do
-
-  # end
-
-  describe '#valid_move?' do
-    it 'will return true for an of index 4' do
-
-      game = Game.new
-      game.instance_variable_set(:@board, [' ', 'X', ' ', ' ', ' ', ' ', 'X', ' ', 'X'])
-
-      expect(game.valid_move?(4)).to eq(true)
-    end
-
-    it 'will return false for an of index 6' do
-
-      game = Game.new
-      game.instance_variable_set(:@board, [' ', 'X', ' ', ' ', ' ', ' ', 'X', ' ', 'X'])
-
-      expect(game.valid_move?(6)).to eq(false)
-    end
-  end
-
   describe '#mark_board' do
     it 'will mark the board with an X at 4th index' do
-
       game = Game.new
 
       game.mark_board(4)
@@ -235,7 +207,6 @@ describe Game, type: 'class' do
     end
 
     it 'will mark the board with an O at 6th index' do
-
       game = Game.new
       game.instance_variable_set(:@board, [' ', 'X', ' ', ' ', ' ', ' ', 'X', ' ', 'X'])
 
@@ -247,15 +218,35 @@ describe Game, type: 'class' do
     end
   end
 
-  # describe '#improper_move' do
-
-
-  # end
-
   # describe '#move' do
 
+  #   game = Game.new
 
+  #   it 'receives user input using the gets method' do
+  #     allow($stdout).to receive(:puts)
+  #     expect(game).to receive(:gets).and_return('1')
+
+  #     game.move
+  #   end
+
+  #   it 'calls #input_to_index and #position_taken?' do
+  #     allow($stdout).to receive(:puts)
+  #     expect(game).to receive(:gets).and_return('1')
+  #     expect(game).to receive(:input_to_index).and_return(0)
+  #     expect(game).to receive(:position_taken?).and_return(false)
+
+  #     game.move
+  #   end
+
+  #   it 'takes a user input of 4 and displays a board with an X in the 0th index' do
+  #     allow($stdout).to receive(:puts)
+  #     expect(game).to receive(:gets).and_return('1')
+  #     expect(game).to receive(:display_board)
+
+  #     game.move
+
+  #     board = game.instance_variable_get(:@board)
+  #     expect(board).to eq(['X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+  #   end
   # end
-
-
 end
