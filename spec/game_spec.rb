@@ -1,11 +1,7 @@
 require 'spec_helper'
 require_relative '../lib/game'
 
-describe Game, type: 'class' do
-  it('is valid with valid attributes') do
-
-    expect { Game }.not_to raise_error(NameError)
-  end
+describe Game do
 
   describe 'initialize' do
     it 'will assign an instance variable @board to an array with 9 empty strings' do
@@ -218,35 +214,35 @@ describe Game, type: 'class' do
     end
   end
 
-  # describe '#move' do
+  describe '#move' do
 
-  #   game = Game.new
+    game = Game.new
 
-  #   it 'receives user input using the gets method' do
-  #     allow($stdout).to receive(:puts)
-  #     expect(game).to receive(:gets).and_return('1')
+    it 'receives user input using the gets method' do
+      allow($stdout).to receive(:puts)
+      expect(game).to receive(:gets).and_return('1')
 
-  #     game.move
-  #   end
+      game.move
+    end
 
-  #   it 'calls #input_to_index and #position_taken?' do
-  #     allow($stdout).to receive(:puts)
-  #     expect(game).to receive(:gets).and_return('1')
-  #     expect(game).to receive(:input_to_index).and_return(0)
-  #     expect(game).to receive(:position_taken?).and_return(false)
+    it 'calls #input_to_index and #position_taken?' do
+      allow($stdout).to receive(:puts)
+      expect(game).to receive(:gets).and_return('1')
+      expect(game).to receive(:input_to_index).and_return(0)
+      expect(game).to receive(:position_taken?).and_return(false)
 
-  #     game.move
-  #   end
+      game.move
+    end
 
   #   it 'takes a user input of 4 and displays a board with an X in the 0th index' do
   #     allow($stdout).to receive(:puts)
   #     expect(game).to receive(:gets).and_return('1')
+  #     expect(game).to receive(:input_to_index).and_return(0)
   #     expect(game).to receive(:display_board)
-
-  #     game.move
 
   #     board = game.instance_variable_get(:@board)
   #     expect(board).to eq(['X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+  #     game.move
   #   end
-  # end
+  end
 end
