@@ -1,20 +1,42 @@
 require 'spec_helper'
 require_relative '../lib/game'
 
-describe Game do
-  describe '#input_to_index' do
-    it 'will return 4 as the array index when a user inputs 5' do
-      game = Game.new
+class FakeConsole
 
-      expect(game.input_to_index(5)).to eq(4)
-    end
-
-    it 'will return 0 as the array index when a user inputs 1' do
-      game = Game.new
-
-      expect(game.input_to_index(1)).to eq(0)
-    end
+  def retrieve_user_input
+    '5'
   end
+
+  def print_message(string)
+  end
+end
+
+describe Game do
+  describe 'play' do
+    it 'marks a board appropriately' do
+      board = Board.new
+      console = FakeConsole.new
+      game = Game.new(board, console)
+
+      game.play
+
+      expect(board.board_string).to eq('something goes here')
+    end
+
+  end
+  # describe '#input_to_index' do
+  #   it 'will return 4 as the array index when a user inputs 5' do
+  #     game = Game.new
+
+  #     expect(game.input_to_index(5)).to eq(4)
+  #   end
+
+  #   it 'will return 0 as the array index when a user inputs 1' do
+  #     game = Game.new
+
+  #     expect(game.input_to_index(1)).to eq(0)
+  #   end
+  # end
 
   # describe '#play' do
 

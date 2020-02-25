@@ -4,12 +4,13 @@ class Board
     @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   end
 
-  def display_board
-    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts '-----------'
-    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
-    puts '-----------'
-    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+  def board_string
+
+    expected_output  = " #{@board[0]} | #{@board[1]} | #{@board[2]} \n"
+    expected_output += "-----------\n"
+    expected_output += " #{@board[3]} | #{@board[4]} | #{@board[5]} \n"
+    expected_output += "-----------\n"
+    expected_output +  " #{@board[6]} | #{@board[7]} | #{@board[8]} \n"
   end
 
   def position_taken?(index)
