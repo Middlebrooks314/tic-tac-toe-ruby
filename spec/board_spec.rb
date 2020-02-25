@@ -161,45 +161,63 @@ describe Board do
     expect(board.board_string).to eq(expected_output)
   end
 
-  #   it 'will print a full board with O values' do
-  #     board = Board.new
-  #     board.instance_variable_set(:@board, ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'])
+  it 'will print a full board with O values' do
+    board = Board.new
 
-  #     expected_output  = " O | O | O \n"
-  #     expected_output += "-----------\n"
-  #     expected_output += " O | O | O \n"
-  #     expected_output += "-----------\n"
-  #     expected_output += " O | O | O \n"
-  #     expect {board.display_board}.to output(expected_output).to_stdout
-  #   end
-  # end
+    board.mark_board(0, 'O')
+    board.mark_board(1, 'O')
+    board.mark_board(2, 'O')
+    board.mark_board(3, 'O')
+    board.mark_board(4, 'O')
+    board.mark_board(5, 'O')
+    board.mark_board(6, 'O')
+    board.mark_board(7, 'O')
+    board.mark_board(8, 'O')
 
-  # describe '#position_taken?' do
-  #   it 'will return false when an index of 4 is entered' do
-  #     board = Board.new
-  #     board.instance_variable_set(:@board, [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'O', 'X'])
+    expected_output  = " O | O | O \n"
+    expected_output += "-----------\n"
+    expected_output += " O | O | O \n"
+    expected_output += "-----------\n"
+    expected_output += " O | O | O \n"
+    expect(board.board_string).to eq(expected_output)
+  end
+end
 
-  #     expect(board.position_taken?(4)).to eq(false)
-  #   end
+  describe '#position_taken?' do
+    it 'will return false when an index of 4 is entered' do
+      board = Board.new
 
-  #   it 'will return true when an index of 8 is entered' do
-  #     board = Board.new
-  #     board.instance_variable_set(:@board, [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'O', 'X'])
+      board.mark_board(6)
+      board.mark_board(7, 'O')
+      board.mark_board(8)
 
-  #     expect(board.position_taken?(8)).to eq(true)
-  #   end
-  # end
+      expect(board.position_taken?(4)).to eq(false)
+    end
 
-  # describe '#mark_board' do
-  #   it 'will mark the board with an X at 4th index' do
-  #     board = Board.new
+  it 'will return true when an index of 8 is entered' do
 
-  #     board.mark_board(4)
+    board = Board.new
 
-  #     board = board.instance_variable_get(:@board)
+    board.mark_board(6)
+    board.mark_board(7, 'O')
+    board.mark_board(8)
 
-  #     expect(board).to eq([' ', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' '])
-  #   end
+    expect(board.position_taken?(8)).to eq(true)
+  end
+
+  describe '#mark_board' do
+    it 'will mark the board with an X at 4th index' do
+      board = Board.new
+
+      board.mark_board(4)
+
+      expected_output  = "   |   |   \n"
+      expected_output += "-----------\n"
+      expected_output += "   | X |   \n"
+      expected_output += "-----------\n"
+      expected_output += "   |   |   \n"
+      expect(board.board_string).to eq(expected_output)
+    end
 
   #   it 'will mark the board with an O at 6th index' do
   #     board = Board.new
@@ -211,5 +229,5 @@ describe Board do
 
   #     expect(board).to eq([' ', 'X', ' ', ' ', 'O', ' ', 'X', ' ', 'X'])
   #   end
-  # end
+  end
 end
