@@ -11,7 +11,8 @@ describe GameRunner do
   describe 'welcome' do
     it 'welcomes the user to the game' do
       console = FakeConsole.new
-      runner = GameRunner.new(console)
+      board = Board.new
+      runner = GameRunner.new(console, board)
 
       runner.run
 

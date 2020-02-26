@@ -2,13 +2,14 @@ require_relative 'board'
 require_relative 'console'
 require 'pry'
 class Game
+  # def initialize(board, console)
   def initialize(board, console)
     @board = board
     @console = console
   end
 
   def welcome
-    'Welcome to Tic Tac Toe'
+    @console.print_message('Welcome to Tic Tac Toe')
   end
 
   def play
