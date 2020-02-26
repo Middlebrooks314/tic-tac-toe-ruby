@@ -1,4 +1,3 @@
-# require 'game'
 class Board
   def initialize
     @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']

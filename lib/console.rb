@@ -4,6 +4,6 @@ class Console
   end
 
   def print_message(string)
-    print(string)
+    puts(string)
   end
 end
