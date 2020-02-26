@@ -2,106 +2,106 @@ require 'spec_helper'
 require_relative '../lib/board'
 
 describe Board do
-  describe 'board_string' do
-    it 'will print a blank board when the board array contains only empty strings' do
+  describe 'display' do
+    it 'returns a blank board when the board array contains only empty strings' do
 
       board = Board.new
 
-      expected_output  = "   |   |   \n"
+      expected_output  = "   |   |  \n"
       expected_output += "-----------\n"
-      expected_output += "   |   |   \n"
+      expected_output += "   |   |  \n"
       expected_output += "-----------\n"
-      expected_output += "   |   |   \n"
-      expect(board.board_string).to eq(expected_output)
+      expected_output += "   |   |  \n"
+      expect(board.display).to eq(expected_output)
     end
   end
-  it 'will print a board with an X in the center position' do
+  it 'returns a board with an X in the center position' do
     board = Board.new
 
     board.mark_board(4)
 
-    expected_output  = "   |   |   \n"
+    expected_output  = "   |   |  \n"
     expected_output += "-----------\n"
-    expected_output += "   | X |   \n"
+    expected_output += "   | X |  \n"
     expected_output += "-----------\n"
-    expected_output += "   |   |   \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += "   |   |  \n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a board with an X in the corner position' do
+  it 'returns a board with an O in the upper right corner position' do
     board = Board.new
 
     board.mark_board(0, 'O')
 
-    expected_output  = " O |   |   \n"
+    expected_output  = " O |   |  \n"
     expected_output += "-----------\n"
-    expected_output += "   |   |   \n"
+    expected_output += "   |   |  \n"
     expected_output += "-----------\n"
-    expected_output += "   |   |   \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += "   |   |  \n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a board with O in across the top row in indexes 0-2' do
+  it 'returns a board with O in across the top row in indexes 0-2' do
     board = Board.new
 
     board.mark_board(0, 'O')
     board.mark_board(1, 'O')
     board.mark_board(2, 'O')
 
-    expected_output  = " O | O | O \n"
+    expected_output  = " O | O | O\n"
     expected_output += "-----------\n"
-    expected_output += "   |   |   \n"
+    expected_output += "   |   |  \n"
     expected_output += "-----------\n"
-    expected_output += "   |   |   \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += "   |   |  \n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a board with X across the bottom row in indexes 6-8' do
+  it 'returns a board with X across the bottom row in indexes 6-8' do
     board = Board.new
 
     board.mark_board(6)
     board.mark_board(7)
     board.mark_board(8)
 
-    expected_output  = "   |   |   \n"
+    expected_output  = "   |   |  \n"
     expected_output += "-----------\n"
-    expected_output += "   |   |   \n"
+    expected_output += "   |   |  \n"
     expected_output += "-----------\n"
-    expected_output += " X | X | X \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += " X | X | X\n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a board with X on the left to right upwards diagonal in indexes 2, 4, 6' do
+  it 'returns a board with X on the left to right upwards diagonal in indexes 2, 4, 6' do
     board = Board.new
 
     board.mark_board(2)
     board.mark_board(4)
     board.mark_board(6)
 
-    expected_output  = "   |   | X \n"
+    expected_output  = "   |   | X\n"
     expected_output += "-----------\n"
-    expected_output += "   | X |   \n"
+    expected_output += "   | X |  \n"
     expected_output += "-----------\n"
-    expected_output += " X |   |   \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += " X |   |  \n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a board with O in the right to left downwards diagonal in indexes 0, 4, 8' do
+  it 'returns a board with O in the right to left downwards diagonal in indexes 0, 4, 8' do
     board = Board.new
 
     board.mark_board(0, 'O')
     board.mark_board(4, 'O')
     board.mark_board(8, 'O')
 
-    expected_output  = " O |   |   \n"
+    expected_output  = " O |   |  \n"
     expected_output += "-----------\n"
-    expected_output += "   | O |   \n"
+    expected_output += "   | O |  \n"
     expected_output += "-----------\n"
-    expected_output += "   |   | O \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += "   |   | O\n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a full board with arbitrary X and O values' do
+  it 'returns a full board with arbitrary X and O values' do
 
     board = Board.new
 
@@ -115,15 +115,15 @@ describe Board do
     board.mark_board(7)
     board.mark_board(8, 'O')
 
-    expected_output  = " O | X | O \n"
+    expected_output  = " O | X | O\n"
     expected_output += "-----------\n"
-    expected_output += " X | O | X \n"
+    expected_output += " X | O | X\n"
     expected_output += "-----------\n"
-    expected_output += " X | X | O \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += " X | X | O\n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a full board with arbitrary character values' do
+  it 'returns a full board with arbitrary character values' do
 
     board = Board.new
     board.mark_board(0, 'M')
@@ -136,15 +136,15 @@ describe Board do
     board.mark_board(7, 'V')
     board.mark_board(8, 'P')
 
-    expected_output  = " M | $ | O \n"
+    expected_output  = " M | $ | O\n"
     expected_output += "-----------\n"
-    expected_output += " # | O | X \n"
+    expected_output += " # | O | X\n"
     expected_output += "-----------\n"
-    expected_output += " X | V | P \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += " X | V | P\n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a full board with X values' do
+  it 'returns a full board with X values' do
     board = Board.new
 
     board.mark_board(0)
@@ -157,15 +157,15 @@ describe Board do
     board.mark_board(7)
     board.mark_board(8)
 
-    expected_output  = " X | X | X \n"
+    expected_output  = " X | X | X\n"
     expected_output += "-----------\n"
-    expected_output += " X | X | X \n"
+    expected_output += " X | X | X\n"
     expected_output += "-----------\n"
-    expected_output += " X | X | X \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += " X | X | X\n"
+    expect(board.display).to eq(expected_output)
   end
 
-  it 'will print a full board with O values' do
+  it 'returns a full board with O values' do
     board = Board.new
 
     board.mark_board(0, 'O')
@@ -178,17 +178,17 @@ describe Board do
     board.mark_board(7, 'O')
     board.mark_board(8, 'O')
 
-    expected_output  = " O | O | O \n"
+    expected_output  = " O | O | O\n"
     expected_output += "-----------\n"
-    expected_output += " O | O | O \n"
+    expected_output += " O | O | O\n"
     expected_output += "-----------\n"
-    expected_output += " O | O | O \n"
-    expect(board.board_string).to eq(expected_output)
+    expected_output += " O | O | O\n"
+    expect(board.display).to eq(expected_output)
   end
 end
 
 describe '#position_taken?' do
-  it 'will return false when an index that is not taken is entered' do
+  it 'returns false when an index that is not taken is entered' do
     board = Board.new
 
     board.mark_board(6)
@@ -198,7 +198,7 @@ describe '#position_taken?' do
     expect(board.position_taken?(4)).to eq(false)
   end
 
-  it 'will return true when an index that is taken is entered' do
+  it 'returns true when an index that is taken is entered' do
 
     board = Board.new
 

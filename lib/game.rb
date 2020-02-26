@@ -12,10 +12,10 @@ class Game
   end
 
   def play
-    @console.print_message(@board.board_string)
+    @console.print_message(@board.display)
     @console.print_message('Please enter a number 1-9')
     index = @console.retrieve_user_input.to_i - 1
     @board.position_taken?(index) ? play : @board.mark_board(index)
-    @console.print_message(@board.board_string)
+    @console.print_message(@board.display)
   end
 end

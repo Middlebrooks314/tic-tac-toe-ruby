@@ -40,11 +40,11 @@ describe Game do
 
       game.play
 
-      expected_output  = "   |   |   \n"
+      expected_output  = "   |   |  \n"
       expected_output += "-----------\n"
-      expected_output += "   | X |   \n"
+      expected_output += "   | X |  \n"
       expected_output += "-----------\n"
-      expected_output += "   |   |   \n"
+      expected_output += "   |   |  \n"
       expect(console.print_message(console.printed_string)).to eq(expected_output)
     end
 
@@ -57,11 +57,11 @@ describe Game do
 
       game.play
 
-      expected_output  = "   |   | X \n"
+      expected_output  = "   |   | X\n"
       expected_output += "-----------\n"
-      expected_output += "   |   |   \n"
+      expected_output += "   |   |  \n"
       expected_output += "-----------\n"
-      expected_output += "   |   |   \n"
+      expected_output += "   |   |  \n"
       expect(console.print_message(console.printed_string)).to eq(expected_output)
     end
   end
