@@ -3,10 +3,13 @@ require_relative '../lib/game'
 
 class FakeConsole
   attr_reader :printed_string
-  attr_reader :input
 
-  def retrieve_user_input(input)
+  def stub_get_input(input)
     @input = input
+  end
+
+  def retrieve_user_input
+    @input
   end
 
   def print_message(string)
@@ -42,23 +45,25 @@ describe Game do
       expected_output += "   | X |   \n"
       expected_output += "-----------\n"
       expected_output += "   |   |   \n"
-      expect(board.board_string).to eq(expected_output)
+      expect(console.print_message(console.printed_string)).to eq(expected_output)
     end
 
-    # it 'marks a board appropriately with an O in the upper right corner' do
-    #   board = Board.new
-    #   console = FakeConsole.new
-    #   game = Game.new(board, console)
+    it 'marks a board appropriately with an X in the upper right corner' do
+      board = Board.new
+      console = FakeConsole.new
+      console.stub_get_input('3')
 
-    #   game.play
+      game = Game.new(board, console)
 
-    #   expected_output  = "   |   | O \n"
-    #   expected_output += "-----------\n"
-    #   expected_output += "   |   |   \n"
-    #   expected_output += "-----------\n"
-    #   expected_output += "   |   |   \n"
-    #   expect(board.board_string).to eq(expected_output)
-    # end
+      game.play
+
+      expected_output  = "   |   | X \n"
+      expected_output += "-----------\n"
+      expected_output += "   |   |   \n"
+      expected_output += "-----------\n"
+      expected_output += "   |   |   \n"
+      expect(console.print_message(console.printed_string)).to eq(expected_output)
+    end
   end
   # describe '#input_to_index' do
   #   it 'will return 4 as the array index when a user inputs 5' do

@@ -1,10 +1,10 @@
-class GameRunner
-  def initialize(game)
-    @game = Game.new
-  end
+# class GameRunner
+#   def initialize(game)
+#     @game = Game.new
+#   end
 
-  def run
-    @game.welcome
-    @game.play
-  end
-end
+#   def run
+#     @game.welcome
+#     @game.play
+#   end
+# end

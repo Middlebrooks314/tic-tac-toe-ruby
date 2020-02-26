@@ -2,7 +2,6 @@ require_relative 'board'
 require_relative 'console'
 require 'pry'
 class Game
-  # def initialize(board, console)
   def initialize(board, console)
     @board = board
     @console = console
