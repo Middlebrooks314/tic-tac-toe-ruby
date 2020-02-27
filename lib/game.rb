@@ -18,8 +18,4 @@ class Game
     @board.position_taken?(index) ? play : @board.mark_board(index)
     @console.print_message(@board.display)
   end
-
-  def game_over?
-    @board.winning_combination? || @board.full_board?
-  end
 end
