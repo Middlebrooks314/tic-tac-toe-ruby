@@ -207,4 +207,38 @@ describe '#position_taken?' do
 
     expect(board.position_taken?(8)).to eq(true)
   end
+
+  describe 'full_board?' do
+    it 'returns true when every index in board array is full' do
+      board = Board.new
+
+      board.mark_board(0, 'O')
+      board.mark_board(1)
+      board.mark_board(2, 'O')
+      board.mark_board(3)
+      board.mark_board(4, 'O')
+      board.mark_board(5)
+      board.mark_board(6)
+      board.mark_board(7)
+      board.mark_board(8, 'O')
+
+      expect(board.full_board?).to eq(true)
+    end
+  end
+
+  describe 'full_board?' do
+    it 'returns false when there is an available index in the board array' do
+      board = Board.new
+
+      board.mark_board(0, 'O')
+      board.mark_board(2, 'O')
+      board.mark_board(3)
+      board.mark_board(4, 'O')
+      board.mark_board(6)
+      board.mark_board(7)
+      board.mark_board(8, 'O')
+
+      expect(board.full_board?).to eq(false)
+    end
+  end
 end
