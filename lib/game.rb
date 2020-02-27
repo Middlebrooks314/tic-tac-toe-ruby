@@ -1,13 +1,21 @@
+require_relative 'board'
+require_relative 'console'
+
 class Game
-  def welcome
-    puts 'Hello, welcome to Tic Tac Toe.'
+  def initialize(board, console)
+    @board = board
+    @console = console
   end
 
-  def display_board
-    puts '   |   |   '
-    puts '-----------'
-    puts '   |   |   '
-    puts '-----------'
-    puts '   |   |   '
+  def welcome
+    @console.print_message('Welcome to Tic Tac Toe')
+  end
+
+  def play
+    @console.print_message(@board.display)
+    @console.print_message('Please enter a number 1-9')
+    index = @console.retrieve_user_input.to_i - 1
+    @board.position_taken?(index) ? play : @board.mark_board(index)
+    @console.print_message(@board.display)
   end
 end

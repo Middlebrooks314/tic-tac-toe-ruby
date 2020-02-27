@@ -1,5 +1,8 @@
 require_relative '../lib/game.rb'
+require_relative '../lib/console.rb'
 
-game = Game.new
+console = Console.new
+board = Board.new
+game = Game.new(board, console)
 game.welcome
-game.display_board
+game.play
