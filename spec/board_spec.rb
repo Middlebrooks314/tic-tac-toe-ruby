@@ -199,7 +199,6 @@ describe '#position_taken?' do
   end
 
   it 'returns true when an index that is taken is entered' do
-
     board = Board.new
 
     board.mark_board(6)
