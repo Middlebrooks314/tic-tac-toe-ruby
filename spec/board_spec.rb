@@ -220,7 +220,7 @@ describe '#position_taken?' do
       board.mark_board(5)
       board.mark_board(6)
       board.mark_board(7)
-      board.mark_board(8, 'O')
+      board.mark_board(8)
 
       expect(board.full_board?).to eq(true)
     end
