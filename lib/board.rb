@@ -1,48 +1,31 @@
 class Board
-  def initialize
-    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  end
+  attr_accessor :squares
 
-  WINNING_COMBOS = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-]
+  def initialize
+    @squares = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  end
 
   def display
     <<-HEREDOC
- #{@board[0]} | #{@board[1]} | #{@board[2]}
+ #{@squares[0]} | #{@squares[1]} | #{@squares[2]}
 -----------
- #{@board[3]} | #{@board[4]} | #{@board[5]}
+ #{@squares[3]} | #{@squares[4]} | #{@squares[5]}
 -----------
- #{@board[6]} | #{@board[7]} | #{@board[8]}
+ #{@squares[6]} | #{@squares[7]} | #{@squares[8]}
     HEREDOC
   end
 
   def position_taken?(index)
-    @board[index] != ' '
+    @squares[index] != ' '
   end
 
   def mark(index, mark = 'X')
-    @board[index] = mark
+    @squares[index] = mark
   end
 
   def full?
-    @board.all? do |index|
+    @squares.all? do |index|
       index != ' '
-    end
-  end
-
-  def winning_combination?
-    WINNING_COMBOS.any? do |combo|
-      position_taken?(combo[0]) &&
-      @board[combo[0]] == @board[combo[1]] &&
-      @board[combo[0]] == @board[combo[2]]
     end
   end
 end

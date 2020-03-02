@@ -241,41 +241,4 @@ describe '#position_taken?' do
       expect(board.full?).to eq(false)
     end
   end
-
-  describe 'winning_combination?' do
-    it 'returns true with an X winning combination' do
-      board = Board.new
-
-      board.mark(2)
-      board.mark(4)
-      board.mark(6)
-
-      expect(board.winning_combination?).to eq(true)
-    end
-  end
-
-  describe 'winning_combination?' do
-    it 'returns true with an O winning combination' do
-      board = Board.new
-
-      board.mark(1, 'O')
-      board.mark(4, 'O')
-      board.mark(7, 'O')
-
-      expect(board.winning_combination?).to eq(true)
-    end
-  end
-
-  describe 'winning_combination?' do
-    it 'returns false when there is no winning sequence of characters' do
-      board = Board.new
-
-      board.mark(1, 'O')
-      board.mark(6, 'O')
-      board.mark(7, 'O')
-      board.mark(8)
-
-      expect(board.winning_combination?).to eq(false)
-    end
-  end
 end
