@@ -2,7 +2,7 @@ require_relative 'board'
 require_relative 'console'
 
 class Game
-  def initialize(board, console = Console.new)
+  def initialize(board, console)
     @board = board
     @console = console
   end
@@ -17,9 +17,5 @@ class Game
     index = @console.retrieve_user_input.to_i - 1
     @board.position_taken?(index) ? play : @board.mark(index)
     @console.print_message(@board.display)
-  end
-
-  def game_over?
-    @board.winning_combination? || @board.full?
   end
 end
