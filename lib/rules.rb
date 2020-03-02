@@ -1,5 +1,4 @@
 require_relative 'board'
-require 'pry'
 
 module Rules
 
