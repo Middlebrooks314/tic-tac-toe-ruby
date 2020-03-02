@@ -198,7 +198,7 @@ describe '#position_taken?' do
     expect(board.position_taken?(4)).to eq(false)
   end
 
-  it 'returns true when an index that is taken is entered' do
+  it 'returns true when an index that is entered is not an empty string' do
     board = Board.new
 
     board.mark(6)
@@ -209,25 +209,31 @@ describe '#position_taken?' do
   end
 
   describe 'full?' do
-    it 'returns true when every index in board array is full' do
+    it 'returns true when every index in squares array is full with Xs' do
       board = Board.new
 
-      board.mark(0, 'O')
-      board.mark(1)
-      board.mark(2, 'O')
-      board.mark(3)
-      board.mark(4, 'O')
-      board.mark(5)
-      board.mark(6)
-      board.mark(7)
-      board.mark(8)
+      board.squares.each.with_index do |_string, index|
+        board.mark(index)
+      end
 
       expect(board.full?).to eq(true)
     end
   end
 
   describe 'full?' do
-    it 'returns false when there is an available index in the board array' do
+    it 'returns true when every index in squares array is full with Os' do
+      board = Board.new
+
+      board.squares.each.with_index do |_string, index|
+        board.mark(index, 'O')
+      end
+
+      expect(board.full?).to eq(true)
+    end
+  end
+
+  describe 'full?' do
+    it 'returns false when there is an available index in the squares array' do
       board = Board.new
 
       board.mark(0, 'O')

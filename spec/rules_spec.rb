@@ -14,7 +14,6 @@ describe Rules do
       board.mark(7)
       board.mark(8)
 
-      # Rules.game_over?(board)
       expect(Rules.game_over?(board)).to eq(true)
     end
   end
