@@ -28,11 +28,11 @@ class Board
     @board[index] != ' '
   end
 
-  def mark_board(index, mark = 'X')
+  def mark(index, mark = 'X')
     @board[index] = mark
   end
 
-  def full_board?
+  def full?
     @board.all? do |index|
       index != ' '
     end

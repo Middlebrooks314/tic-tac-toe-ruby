@@ -72,9 +72,9 @@ describe Game do
       console = FakeConsole.new
       game = Game.new(board, console)
 
-      board.mark_board(6)
-      board.mark_board(7)
-      board.mark_board(8)
+      board.mark(6)
+      board.mark(7)
+      board.mark(8)
 
       game.game_over?
       expect(game.game_over?).to eq(true)
@@ -87,15 +87,15 @@ describe Game do
       console = FakeConsole.new
       game = Game.new(board, console)
 
-      board.mark_board(0)
-      board.mark_board(1)
-      board.mark_board(2)
-      board.mark_board(3)
-      board.mark_board(4)
-      board.mark_board(5)
-      board.mark_board(6)
-      board.mark_board(7)
-      board.mark_board(8)
+      board.mark(0)
+      board.mark(1)
+      board.mark(2)
+      board.mark(3)
+      board.mark(4)
+      board.mark(5)
+      board.mark(6)
+      board.mark(7)
+      board.mark(8)
 
       game.game_over?
       expect(game.game_over?).to eq(true)
@@ -105,14 +105,14 @@ describe Game do
   describe 'game_over?' do
     it 'returns false if there is not a full board or a winning board' do
       board = Board.new
-      console = FakeConsole.new
-      game = Game.new(board, console)
+      # console = FakeConsole.new
+      game = Game.new(board)
 
-      board.mark_board(0)
-      board.mark_board(1, 'O')
-      board.mark_board(2)
-      board.mark_board(7, 'O')
-      board.mark_board(8)
+      board.mark(0)
+      board.mark(1, 'O')
+      board.mark(2)
+      board.mark(7, 'O')
+      board.mark(8)
 
       game.game_over?
       expect(game.game_over?).to eq(false)
