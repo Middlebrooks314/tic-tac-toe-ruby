@@ -3,7 +3,7 @@ require_relative '../lib/board'
 
 describe Board do
   describe 'display' do
-    it 'returns a blank board when the sqaures array contains only empty strings' do
+    it 'returns a blank board when the squares array contains only empty strings' do
 
       board = Board.new
 
@@ -218,9 +218,7 @@ describe '#position_taken?' do
 
       expect(board.full?).to eq(true)
     end
-  end
 
-  describe 'full?' do
     it 'returns true when every position on the board is has an O mark' do
       board = Board.new
 
@@ -230,9 +228,7 @@ describe '#position_taken?' do
 
       expect(board.full?).to eq(true)
     end
-  end
 
-  describe 'full?' do
     it 'returns false when there is an available index in the squares array' do
       board = Board.new
 
