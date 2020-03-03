@@ -18,10 +18,10 @@ module Rules
   end
 
   def self.winning_combination?(board)
-    WINNING_COMBOS.any? do |combo|
-      board.position_taken?(combo[0]) &&
-      board.squares[combo[0]] == board.squares[combo[1]] &&
-      board.squares[combo[0]] == board.squares[combo[2]]
+    WINNING_COMBOS.any? do |x, y, z|
+      board.position_taken?(x) &&
+      board.squares[x] == board.squares[y] &&
+      board.squares[x] == board.squares[z]
     end
   end
 end

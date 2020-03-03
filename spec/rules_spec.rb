@@ -16,9 +16,7 @@ describe Rules do
 
       expect(Rules.game_over?(board)).to eq(true)
     end
-  end
 
-  describe 'game_over?' do
     it 'returns true if there is a full board' do
       board = Board.new
 
@@ -34,9 +32,7 @@ describe Rules do
 
       expect(Rules.game_over?(board)).to eq(true)
     end
-  end
 
-  describe 'game_over?' do
     it 'returns false if there is not a full board or a winner' do
       board = Board.new
 
@@ -62,9 +58,7 @@ describe Rules do
 
       expect(Rules.winning_combination?(board)).to eq(true)
     end
-  end
 
-  describe 'winning_combination?' do
     it 'returns true when there is an O diagonal winner' do
       board = Board.new
 
@@ -77,9 +71,7 @@ describe Rules do
 
       expect(Rules.winning_combination?(board)).to eq(true)
     end
-  end
 
-  describe 'winning_combination?' do
     it 'returns true with a vertical O winning combination' do
       board = Board.new
 
@@ -107,9 +99,7 @@ describe Rules do
 
       expect(Rules.winning_combination?(board)).to eq(true)
     end
-  end
 
-  describe 'winning_combination?' do
     it 'returns true with a horizontal O winning combination' do
       board = Board.new
 
@@ -122,9 +112,7 @@ describe Rules do
 
       expect(Rules.winning_combination?(board)).to eq(true)
     end
-  end
 
-  describe 'winning_combination?' do
     it 'returns true with a horizontal X winning combination' do
       board = Board.new
 
@@ -138,9 +126,7 @@ describe Rules do
 
       expect(Rules.winning_combination?(board)).to eq(true)
     end
-  end
 
-  describe 'winning_combination?' do
     it 'returns true when there a diagonal and horizontal X winning combo' do
       board = Board.new
 
@@ -156,9 +142,7 @@ describe Rules do
 
       expect(Rules.winning_combination?(board)).to eq(true)
     end
-  end
 
-  describe 'winning_combination?' do
     it 'returns false when there is no winning sequence of characters' do
       board = Board.new
 
