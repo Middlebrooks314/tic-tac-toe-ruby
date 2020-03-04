@@ -14,7 +14,9 @@ module Rules
 ]
 
   def self.game_over?(board)
-    winning_combination?(board) || board.full?
+    winning_combination?(board) || check_for_draw(board)
+
+    # board.full?
   end
 
   def self.winning_combination?(board)
