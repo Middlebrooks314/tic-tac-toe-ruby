@@ -209,7 +209,7 @@ describe '#position_taken?' do
   end
 
   describe 'full?' do
-    it 'returns true when every position on the board is has an X mark' do
+    it 'returns true when every position on the board has an X mark' do
       board = Board.new
 
       board.squares.each.with_index do |_string, index|
@@ -219,7 +219,7 @@ describe '#position_taken?' do
       expect(board.full?).to eq(true)
     end
 
-    it 'returns true when every position on the board is has an O mark' do
+    it 'returns true when every position on the board has an O mark' do
       board = Board.new
 
       board.squares.each.with_index do |_string, index|
