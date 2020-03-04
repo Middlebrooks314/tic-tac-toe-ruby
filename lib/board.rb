@@ -1,23 +1,31 @@
 class Board
-  def initialize
-    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  attr_accessor :squares
+
+  def initialize(squares = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+    @squares = squares
   end
 
   def display
     <<-HEREDOC
- #{@board[0]} | #{@board[1]} | #{@board[2]}
+ #{@squares[0]} | #{@squares[1]} | #{@squares[2]}
 -----------
- #{@board[3]} | #{@board[4]} | #{@board[5]}
+ #{@squares[3]} | #{@squares[4]} | #{@squares[5]}
 -----------
- #{@board[6]} | #{@board[7]} | #{@board[8]}
+ #{@squares[6]} | #{@squares[7]} | #{@squares[8]}
     HEREDOC
   end
 
   def position_taken?(index)
-    @board[index] != ' '
+    @squares[index] != ' '
   end
 
-  def mark_board(index, mark = 'X')
-    @board[index] = mark
+  def mark(index, mark = 'X')
+    @squares[index] = mark
+  end
+
+  def full?
+    @squares.all? do |index|
+      index != ' '
+    end
   end
 end
