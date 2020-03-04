@@ -1,6 +1,7 @@
 require_relative 'board'
+require_relative 'game'
 
-module Rules
+class Rules
 
   WINNING_COMBOS = [
     [0, 1, 2],
@@ -13,13 +14,11 @@ module Rules
     [2, 4, 6]
 ]
 
-  def self.game_over?(board)
+  def game_over?(board)
     winning_combination?(board) || check_for_draw(board)
-
-    # board.full?
   end
 
-  def self.winning_combination?(board)
+  def winning_combination?(board)
     WINNING_COMBOS.any? do |x, y, z|
       board.position_taken?(x) &&
       board.squares[x] == board.squares[y] &&
@@ -27,7 +26,7 @@ module Rules
     end
   end
 
-  def self.check_for_draw(board)
+  def check_for_draw(board)
     winning_combination?(board) == false && board.full? == true
   end
 end

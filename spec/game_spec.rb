@@ -30,7 +30,7 @@ describe Game do
     end
   end
 
-  describe 'play' do
+  describe 'turn' do
     it 'marks a board appropriately with an X in the center' do
       board = Board.new
       console = FakeConsole.new
@@ -38,7 +38,7 @@ describe Game do
 
       game = Game.new(board, console)
 
-      game.play
+      game.turn
 
       expected_output  = "   |   |  \n"
       expected_output += "-----------\n"
@@ -55,7 +55,7 @@ describe Game do
 
       game = Game.new(board, console)
 
-      game.play
+      game.turn
 
       expected_output  = "   |   | X\n"
       expected_output += "-----------\n"
@@ -65,4 +65,18 @@ describe Game do
       expect(console.print_message(console.printed_string)).to eq(expected_output)
     end
   end
+
+  describe 'switch_players' do
+    it 'sets X as the current player when the game is started' do
+      board = Board.new
+      console = Console.new
+      game = Game.new(board, console)
+
+      expect(game.switch_players).to eq('O')
+    end
+  end
+
+  # describe 'play' do
+  #   it ''
+  # end
 end
