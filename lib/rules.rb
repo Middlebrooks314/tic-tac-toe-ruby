@@ -24,4 +24,8 @@ module Rules
       board.squares[x] == board.squares[z]
     end
   end
+
+  def self.check_for_draw(board)
+    winning_combination?(board) == false && board.full? == true
+  end
 end
