@@ -145,4 +145,22 @@ describe Game do
 
     expect(@console.print_message(@console.printed_string)).to eq('Game Over')
   end
+
+  describe 'game_over_message' do
+    it 'prints Game Over message to the user when the game is completed' do
+
+      @game.game_over_message
+
+      expect(@console.printed_string).to eq('Game Over')
+    end
+  end
+
+  describe 'alert_current_player' do
+    it 'alerts player X that this is their turn when the game is started' do
+
+      @game.alert_current_player
+
+      expect(@console.printed_string).to eq('It is X\'s turn')
+    end
+  end
 end
