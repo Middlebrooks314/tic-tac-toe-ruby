@@ -30,7 +30,9 @@ class Game
   end
 
   def switch_players
-    @current_player == 'X' ? @current_player = 'O' : @current_player = 'X'
+    if !rules.game_over?(board)
+      @current_player == 'X' ? @current_player = 'O' : @current_player = 'X'
+    end
   end
 
   def play
@@ -42,7 +44,13 @@ class Game
     console.print_message("It is #{@current_player}\'s turn")
   end
 
+  def winner
+    if rules.winning_combination?(board)
+      @current_player
+    end
+  end
+
   def game_over_message
-    console.print_message('Game Over')
+    console.print_message (winner ? "Congratulations #{@current_player}!" : 'Draw!')
   end
 end
