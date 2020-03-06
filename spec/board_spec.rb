@@ -4,7 +4,6 @@ require_relative '../lib/board'
 describe Board do
   describe 'display' do
     it 'returns a blank board when the squares array contains only empty strings' do
-
       board = Board.new
 
       expected_output  = "   |   |  \n"
@@ -102,7 +101,6 @@ describe Board do
   end
 
   it 'returns a full board with arbitrary X and O values' do
-
     board = Board.new
 
     board.mark(0, 'O')
@@ -124,8 +122,8 @@ describe Board do
   end
 
   it 'returns a full board with arbitrary character values' do
-
     board = Board.new
+
     board.mark(0, 'M')
     board.mark(1, '$')
     board.mark(2, 'O')

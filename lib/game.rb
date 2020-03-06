@@ -27,7 +27,6 @@ class Game
 
   def switch_players
     @current_player == 'X' ? @current_player = 'O' : @current_player = 'X'
-
   end
 
   def play

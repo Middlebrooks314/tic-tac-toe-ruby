@@ -27,7 +27,6 @@ describe Game do
 
   describe 'welcome' do
     it 'prints a string to welcome user to the game' do
-
       @game.welcome
 
       expect(@console.printed_string).to eq('Welcome to Tic Tac Toe')
@@ -64,14 +63,12 @@ describe Game do
 
   describe 'switch_players' do
     it 'sets X as the current player when the game is started' do
-
       expect(@game.switch_players).to eq('O')
     end
   end
 
   describe 'play' do
     it 'ends the game after X has a winning horizontal combination' do
-
       @board.mark(0)
       @board.mark(1)
       @console.stub_get_input(['3'])
@@ -82,7 +79,6 @@ describe Game do
   end
 
   it 'ends the game after X has a winning diagonal combination' do
-
     @board.mark(0)
     @console.stub_get_input(['3', '4', '5', '7'])
     @game.play
@@ -91,7 +87,6 @@ describe Game do
   end
 
   it 'ends the game after X has a winning diagonal combination on a full board' do
-
     @console.stub_get_input(['3', '6', '9', '8', '7', '1', '4', '2', '5'])
     @game.play
 
@@ -99,7 +94,6 @@ describe Game do
   end
 
   it 'ends the game after O has a winning horizontal combination' do
-
     @console.stub_get_input(['1', '4', '7', '5', '8', '6'])
     @game.play
 
@@ -107,7 +101,6 @@ describe Game do
   end
 
   it 'ends the game after O has a winning diagonal combination' do
-
     @console.stub_get_input(['3', '1', '6', '5', '7', '9'])
     @game.play
 
@@ -115,7 +108,6 @@ describe Game do
   end
 
   it 'ends the game after O has a winning diagonal combination on a full board' do
-
     @console.stub_get_input(['2', '1', '4', '5', '3', '7', '6', '8', '9'])
     @game.play
 
@@ -123,23 +115,20 @@ describe Game do
   end
 
   it 'ends the game after the board is full with no winning combinations' do
-
     @console.stub_get_input(['1', '2', '3', '4', '5', '8', '6', '9', '7'])
     @game.play
 
     expect(@rules.game_over?(@board)).to eq true
   end
 
-  it 'tells the user that the game is over when there is a winning combination' do
-
+  it 'tells the user that the game is over when O has a winning diagonal combination' do
     @console.stub_get_input(['3', '1', '6', '5', '7', '9'])
     @game.play
 
     expect(@console.print_message(@console.printed_string)).to eq('Game Over')
   end
 
-  it 'tells the user that the game is over when there is a winning combination' do
-
+  it 'tells the user that the game is over when X has a winning diagonal combination' do
     @console.stub_get_input(['1', '2', '3', '4', '5', '8', '6', '9', '7'])
     @game.play
 
@@ -148,7 +137,6 @@ describe Game do
 
   describe 'game_over_message' do
     it 'prints Game Over message to the user when the game is completed' do
-
       @game.game_over_message
 
       expect(@console.printed_string).to eq('Game Over')
@@ -157,7 +145,6 @@ describe Game do
 
   describe 'alert_current_player' do
     it 'alerts player X that this is their turn when the game is started' do
-
       @game.alert_current_player
 
       expect(@console.printed_string).to eq('It is X\'s turn')

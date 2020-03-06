@@ -15,7 +15,7 @@ class Rules
 ]
 
   def game_over?(board)
-    winning_combination?(board) || check_for_draw(board)
+    winning_combination?(board) || check_for_draw?(board)
   end
 
   def winning_combination?(board)
@@ -26,7 +26,7 @@ class Rules
     end
   end
 
-  def check_for_draw(board)
+  def check_for_draw?(board)
     winning_combination?(board) == false && board.full? == true
   end
 end
