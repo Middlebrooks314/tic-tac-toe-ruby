@@ -80,7 +80,7 @@ describe Game do
 
   it 'ends the game after X has a winning diagonal combination' do
     @board.mark(0)
-    @console.stub_get_input(['3', '4', '5', '7'])
+    @console.stub_get_input(['3', '4', '5', '6', '7'])
     @game.play
 
     expect(@rules.game_over?(@board)).to eq true
@@ -154,7 +154,7 @@ describe Game do
   it 'ends the game after X has a winning diagonal combination' do
 
     @board.mark(0)
-    @console.stub_get_input(['3', '4', '5', '7'])
+    @console.stub_get_input(['3', '4', '5', '6', '7'])
     @game.play
 
     expect(@rules.game_over?(@board)).to eq true
@@ -222,6 +222,30 @@ describe Game do
       @game.alert_current_player
 
       expect(@console.printed_string).to eq('It is X\'s turn')
+    end
+  end
+
+  describe 'retrieve_user_move' do
+    it 'asks the current player for their move' do
+      @console.stub_get_input([4])
+      @game.retrieve_user_move
+
+      expect(@console.printed_string).to eq('Player X, please enter a position 1-9 that is not already marked')
+    end
+
+    it 'marks the board with the user\'s input when they choose a move between 1-9 and is not already marked' do
+      @board.mark(3)
+      @board.mark(2, 'O')
+      @console.stub_get_input([5])
+      @game.retrieve_user_move
+
+      expected_output  = "   |   | O\n"
+      expected_output += "-----------\n"
+      expected_output += " X | X |  \n"
+      expected_output += "-----------\n"
+      expected_output += "   |   |  \n"
+
+      expect(@board.display).to eq(expected_output)
     end
   end
 end
