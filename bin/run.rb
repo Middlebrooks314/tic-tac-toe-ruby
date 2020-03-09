@@ -3,6 +3,7 @@ require_relative '../lib/console.rb'
 
 console = Console.new
 board = Board.new
-game = Game.new(board, console)
+rules = Rules.new
+game = Game.new(board, console, rules)
 game.welcome
 game.play
