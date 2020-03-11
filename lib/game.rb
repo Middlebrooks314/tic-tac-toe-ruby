@@ -18,11 +18,15 @@ class Game
 
   def turn
     alert_current_player
-    console.print_message("Player #{@current_player}, please enter a number 1-9")
-    index = @console.retrieve_user_input.to_i - 1
-    board.position_taken?(index) ? turn : @board.mark(index, @current_player)
+    retrieve_user_move
     console.print_message(@board.display)
     switch_players
+  end
+
+  def retrieve_user_move
+    console.print_message("Player #{@current_player}, please enter a position 1-9 that is not already marked")
+    index = @console.retrieve_user_input.to_i - 1
+    board.valid_move?(index) ? @board.mark(index, @current_player) : retrieve_user_move
   end
 
   def switch_players
@@ -30,7 +34,6 @@ class Game
   end
 
   def play
-    console.print_message(board.display)
     turn until rules.game_over?(board)
     game_over_message
   end

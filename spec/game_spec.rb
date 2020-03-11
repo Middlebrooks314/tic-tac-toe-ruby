@@ -80,7 +80,7 @@ describe Game do
 
   it 'ends the game after X has a winning diagonal combination' do
     @board.mark(0)
-    @console.stub_get_input(['3', '4', '5', '7'])
+    @console.stub_get_input(['3', '4', '5', '6', '7'])
     @game.play
 
     expect(@rules.game_over?(@board)).to eq true
@@ -148,6 +148,104 @@ describe Game do
       @game.alert_current_player
 
       expect(@console.printed_string).to eq('It is X\'s turn')
+    end
+  end
+
+  it 'ends the game after X has a winning diagonal combination' do
+
+    @board.mark(0)
+    @console.stub_get_input(['3', '4', '5', '6', '7'])
+    @game.play
+
+    expect(@rules.game_over?(@board)).to eq true
+  end
+
+  it 'ends the game after X has a winning diagonal combination on a full board' do
+    @console.stub_get_input(['3', '6', '9', '8', '7', '1', '4', '2', '5'])
+    @game.play
+
+    expect(@rules.game_over?(@board)).to eq true
+  end
+
+  it 'ends the game after O has a winning horizontal combination' do
+    @console.stub_get_input(['1', '4', '7', '5', '8', '6'])
+    @game.play
+
+    expect(@rules.game_over?(@board)).to eq true
+  end
+
+  it 'ends the game after O has a winning diagonal combination' do
+    @console.stub_get_input(['3', '1', '6', '5', '7', '9'])
+    @game.play
+
+    expect(@rules.game_over?(@board)).to eq true
+  end
+
+  it 'ends the game after O has a winning diagonal combination on a full board' do
+    @console.stub_get_input(['2', '1', '4', '5', '3', '7', '6', '8', '9'])
+    @game.play
+
+    expect(@rules.game_over?(@board)).to eq true
+  end
+
+  it 'ends the game after the board is full with no winning combinations' do
+    @console.stub_get_input(['1', '2', '3', '4', '5', '8', '6', '9', '7'])
+    @game.play
+
+    expect(@rules.game_over?(@board)).to eq true
+  end
+
+  it 'tells the user that the game is over when O has a winning diagonal combination' do
+    @console.stub_get_input(['3', '1', '6', '5', '7', '9'])
+    @game.play
+
+    expect(@console.print_message(@console.printed_string)).to eq('Game Over')
+  end
+
+  it 'tells the user that the game is over when X has a winning diagonal combination' do
+    @console.stub_get_input(['1', '2', '3', '4', '5', '8', '6', '9', '7'])
+    @game.play
+
+    expect(@console.print_message(@console.printed_string)).to eq('Game Over')
+  end
+
+  describe 'game_over_message' do
+    it 'prints Game Over message to the user when the game is completed' do
+      @game.game_over_message
+
+      expect(@console.printed_string).to eq('Game Over')
+    end
+  end
+
+  describe 'alert_current_player' do
+    it 'alerts player X that this is their turn when the game is started' do
+      @game.alert_current_player
+
+      expect(@console.printed_string).to eq('It is X\'s turn')
+    end
+  end
+
+  describe 'retrieve_user_move' do
+    it 'asks the current player for their move' do
+      @console.stub_get_input([4])
+      @game.retrieve_user_move
+
+      expect(@console.printed_string).to eq('Player X, please enter a position 1-9 that is not already marked')
+    end
+
+    it 'marks the board with the user\'s input when they choose a move between 1-9 and is not already marked' do
+      @board.mark(3)
+      @board.mark(2, 'O')
+      @console.stub_get_input([5])
+      @game.retrieve_user_move
+
+      expected_output  = "   |   | O\n"
+      expected_output += "-----------\n"
+      expected_output += " X | X |  \n"
+      expected_output += "-----------\n"
+      expected_output += "   |   |  \n"
+
+      expect(@board.display).to eq(expected_output)
     end
   end
 end

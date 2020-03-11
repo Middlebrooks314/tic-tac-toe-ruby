@@ -241,4 +241,18 @@ describe '#position_taken?' do
       expect(board.full?).to eq(false)
     end
   end
+
+  describe 'valid_move?' do
+    it 'returns true if when the user enters a valid number 1 -9 and the position is not taken' do
+      board = Board.new
+
+      expect(board.valid_move?(8)).to eq(true)
+    end
+
+    it 'returns false when the user enters a number that is not 1-9' do
+      board = Board.new
+
+      expect(board.valid_move?(11)).to eq(false)
+    end
+  end
 end
