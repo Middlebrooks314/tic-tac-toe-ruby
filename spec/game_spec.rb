@@ -125,22 +125,14 @@ describe Game do
     @console.stub_get_input(['3', '1', '6', '5', '7', '9'])
     @game.play
 
-    expect(@console.print_message(@console.printed_string)).to eq('Game Over')
+    expect(@console.print_message(@console.printed_string)).to eq('Congratulations O!')
   end
 
   it 'tells the user that the game is over when X has a winning diagonal combination' do
     @console.stub_get_input(['1', '2', '3', '4', '5', '8', '6', '9', '7'])
     @game.play
 
-    expect(@console.print_message(@console.printed_string)).to eq('Game Over')
-  end
-
-  describe 'game_over_message' do
-    it 'prints Game Over message to the user when the game is completed' do
-      @game.game_over_message
-
-      expect(@console.printed_string).to eq('Game Over')
-    end
+    expect(@console.print_message(@console.printed_string)).to eq('Congratulations X!')
   end
 
   describe 'alert_current_player' do
@@ -189,31 +181,32 @@ describe Game do
   end
 
   it 'ends the game after the board is full with no winning combinations' do
-    @console.stub_get_input(['1', '2', '3', '4', '5', '8', '6', '9', '7'])
+    @console.stub_get_input(['1', '2', '3', '4', '5', '7', '6', '9', '8'])
     @game.play
 
     expect(@rules.game_over?(@board)).to eq true
+    expect(@console.printed_string).to eq('Draw!')
   end
 
   it 'tells the user that the game is over when O has a winning diagonal combination' do
     @console.stub_get_input(['3', '1', '6', '5', '7', '9'])
     @game.play
 
-    expect(@console.print_message(@console.printed_string)).to eq('Game Over')
+    expect(@console.print_message(@console.printed_string)).to eq('Congratulations O!')
   end
 
   it 'tells the user that the game is over when X has a winning diagonal combination' do
     @console.stub_get_input(['1', '2', '3', '4', '5', '8', '6', '9', '7'])
     @game.play
 
-    expect(@console.print_message(@console.printed_string)).to eq('Game Over')
+    expect(@console.print_message(@console.printed_string)).to eq('Congratulations X!')
   end
 
   describe 'game_over_message' do
     it 'prints Game Over message to the user when the game is completed' do
       @game.game_over_message
 
-      expect(@console.printed_string).to eq('Game Over')
+      expect(@console.printed_string).to eq('Draw!')
     end
   end
 
@@ -246,6 +239,22 @@ describe Game do
       expected_output += "   |   |  \n"
 
       expect(@board.display).to eq(expected_output)
+    end
+  end
+
+  describe 'game_over_message' do
+    it 'will print draw to the console when the board is full and there is no winner' do
+      @console.stub_get_input([1, 2, 3, 4, 6, 9, 7, 5, 8])
+      @game.play
+
+      expect(@console.printed_string).to eq('Draw!')
+    end
+
+    it 'prints Congratulations message to X when they have a winning combination' do
+      @console.stub_get_input([1, 2, 4, 3, 7])
+      @game.play
+
+      expect(@console.printed_string).to eq('Congratulations X!')
     end
   end
 end
