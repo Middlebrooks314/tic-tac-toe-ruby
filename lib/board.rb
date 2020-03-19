@@ -1,5 +1,5 @@
 class Board
-  attr_accessor :squares
+  attr_reader :squares
 
   def initialize(squares = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
     @squares = squares

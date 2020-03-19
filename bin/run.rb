@@ -1,12 +1,9 @@
-require_relative '../lib/game.rb'
-require_relative '../lib/console.rb'
+require 'require_all'
+require_all 'lib'
 
 console = Console.new
 board = Board.new
-rules = Rules.new
-player_one = HumanPlayer.new('Q', console, board)
-# player_two = HumanPlayer.new('W', console, board)
-player_two = DumbPlayer.new
-game = Game.new(board, console, rules, player_one, player_two)
-game.welcome
-game.play
+rules = Rules.new(board)
+display = Display.new(console, board)
+game_factory = GameFactory.new(board, display, rules)
+game_factory.create_game

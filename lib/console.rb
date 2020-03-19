@@ -1,6 +1,6 @@
 class Console
   def retrieve_user_input
-    gets
+    gets.chomp
   end
 
   def print_message(string)
