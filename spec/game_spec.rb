@@ -1,28 +1,15 @@
 require 'spec_helper'
 require_relative '../lib/game'
-
-class FakeConsole
-  attr_reader :printed_string
-
-  def stub_get_input(input)
-    @input = input
-  end
-
-  def retrieve_user_input
-    @input.shift
-  end
-
-  def print_message(string)
-    @printed_string = string
-  end
-end
+require_relative './fake_console.rb'
 
 describe Game do
   before(:each) do
     @board = Board.new
     @rules = Rules.new
     @console = FakeConsole.new
-    @game = Game.new(@board, @console, @rules)
+    @player_one = HumanPlayer.new('X', @console, @board)
+    @player_two = HumanPlayer.new('O', @console, @board)
+    @game = Game.new(@board, @console, @rules, @player_one, @player_two)
   end
 
   describe 'welcome' do
@@ -58,12 +45,6 @@ describe Game do
       expected_output += "-----------\n"
       expected_output += "   |   |  \n"
       expect(@console.print_message(@console.printed_string)).to eq(expected_output)
-    end
-  end
-
-  describe 'switch_players' do
-    it 'sets X as the current player when the game is started' do
-      expect(@game.switch_players).to eq('O')
     end
   end
 
@@ -215,30 +196,6 @@ describe Game do
       @game.alert_current_player
 
       expect(@console.printed_string).to eq('It is X\'s turn')
-    end
-  end
-
-  describe 'retrieve_user_move' do
-    it 'asks the current player for their move' do
-      @console.stub_get_input([4])
-      @game.retrieve_user_move
-
-      expect(@console.printed_string).to eq('Player X, please enter a position 1-9 that is not already marked')
-    end
-
-    it 'marks the board with the user\'s input when they choose a move between 1-9 and is not already marked' do
-      @board.mark(3)
-      @board.mark(2, 'O')
-      @console.stub_get_input([5])
-      @game.retrieve_user_move
-
-      expected_output  = "   |   | O\n"
-      expected_output += "-----------\n"
-      expected_output += " X | X |  \n"
-      expected_output += "-----------\n"
-      expected_output += "   |   |  \n"
-
-      expect(@board.display).to eq(expected_output)
     end
   end
 
