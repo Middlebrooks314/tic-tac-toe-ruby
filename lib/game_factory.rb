@@ -1,25 +1,41 @@
 class GameFactory
   attr_reader :player_one, :player_two
 
-  def initialize(board, display, rules)
+  def initialize(board, display, rules, menu)
     @board = board
     @display = display
     @rules = rules
+    @menu = menu
   end
 
   def create_game
-    create_players
-    game = Game.new(@display, @rules, @player_one, @player_two)
-    game.start
+    player_selections
+    player_choices
+    Game.new(@display, @rules, @player_one, @player_two)
   end
 
   private
 
-  def create_players
+  def player_selections
+    @player_one_option = @menu.player_choice
+    @player_two_option = @menu.player_choice
+  end
+
+  def player_choices
     player_one_mark = create_mark
     player_two_mark = create_mark(player_one_mark)
-    @player_one = HumanPlayer.new(player_one_mark, @board, @display)
-    @player_two = HumanPlayer.new(player_two_mark, @board, @display)
+    @player_one = create_player(@player_one_option, player_one_mark)
+    @player_two = create_player(@player_two_option, player_two_mark)
+  end
+
+  def create_player(player_option, mark)
+    case player_option
+    when '1'
+      player = HumanPlayer.new(mark, @board, @display)
+    when '2'
+      player = ComputerPlayer.new(mark, @board, @display)
+    end
+    player
   end
 
   def create_mark(other_mark = nil)
@@ -38,10 +54,6 @@ class GameFactory
   end
 
   def valid_game_piece?(potential_mark, other_mark)
-    if potential_mark.length > 1 || potential_mark == ' ' || potential_mark == '' || potential_mark == other_mark
-      false
-    else
-      true
-    end
+    potential_mark.length == 1 && potential_mark != other_mark
   end
 end

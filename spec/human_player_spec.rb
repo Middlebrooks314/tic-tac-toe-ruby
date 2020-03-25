@@ -17,8 +17,12 @@ describe HumanPlayer do
     board = Board.new
     display = Display.new(console, board)
     human_player = HumanPlayer.new('X', board, display)
+    board.mark(0)
+    board.mark(8)
     console.stub_get_input([5])
 
-    expect(human_player.move).to eq('X')
+    human_player.move
+
+    expect(board.available_moves).to eq([1, 2, 3, 5, 6, 7])
   end
 end

@@ -27,7 +27,7 @@ describe Display do
   end
 
   describe 'alert_current_player' do
-    it 'alerts the the current player that it is their turn' do
+    it 'alerts the the given player that it is their turn' do
       console = FakeConsole.new
       board = Board.new
       display = Display.new(console, board)

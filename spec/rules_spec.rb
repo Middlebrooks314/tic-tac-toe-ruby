@@ -166,7 +166,7 @@ describe Rules do
     end
   end
 
-  describe 'check_for_draw?' do
+  describe 'draw?' do
     it 'returns true when there is a full board without a winning combination' do
       board = Board.new
       rules = Rules.new(board)
@@ -181,7 +181,7 @@ describe Rules do
       board.mark(7, 'O')
       board.mark(8, 'O')
 
-      expect(rules.check_for_draw?).to eq(true)
+      expect(rules.draw?).to eq(true)
 
     end
 
@@ -199,7 +199,7 @@ describe Rules do
       board.mark(7)
       board.mark(8, 'O')
 
-      expect(rules.check_for_draw?).to eq(false)
+      expect(rules.draw?).to eq(false)
     end
 
     it 'returns false when there is a winning combination on a board that is not full' do
@@ -212,7 +212,7 @@ describe Rules do
       board.mark(6)
       board.mark(8, 'O')
 
-      expect(rules.check_for_draw?).to eq(false)
+      expect(rules.draw?).to eq(false)
     end
   end
 end
