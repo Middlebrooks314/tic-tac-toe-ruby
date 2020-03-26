@@ -1,56 +1,49 @@
 require_relative 'board'
-require_relative 'console'
 require_relative 'rules'
+require_relative 'human_player'
 
 class Game
-  attr_accessor :board, :console, :rules
+  attr_reader :rules
 
-  def initialize(board, console, rules)
-    @board = board
-    @console = console
-    @current_player = 'X'
+  def initialize(display, rules, player_one, player_two)
     @rules = rules
+    @display = display
+    @player_one = player_one
+    @player_two = player_two
+    @current_player = @player_one
   end
 
-  def welcome
-    console.print_message('Welcome to Tic Tac Toe')
+  def start
+    @display.welcome
+    play
   end
 
   def turn
-    alert_current_player
-    retrieve_user_move
-    console.print_message(@board.display)
+    @display.alert_current_player(@current_player)
+    @current_player.move
+    @display.board
     switch_players
   end
 
-  def retrieve_user_move
-    console.print_message("Player #{@current_player}, please enter a position 1-9 that is not already marked")
-    index = @console.retrieve_user_input.to_i - 1
-    board.valid_move?(index) ? @board.mark(index, @current_player) : retrieve_user_move
-  end
-
-  def switch_players
-    if !rules.game_over?(board)
-      @current_player == 'X' ? @current_player = 'O' : @current_player = 'X'
-    end
-  end
-
   def play
-    turn until rules.game_over?(board)
+    @display.board
+    turn until rules.game_over?
     game_over_message
   end
 
-  def alert_current_player
-    console.print_message("It is #{@current_player}\'s turn")
+  def game_over_message
+    winner ? @display.winner_message(@current_player.mark) : @display.draw_message
   end
 
-  def winner
-    if rules.winning_combination?(board)
-      @current_player
+  private
+
+  def switch_players
+    if !rules.game_over?
+      @current_player == @player_one ? @current_player = @player_two : @current_player = @player_one
     end
   end
 
-  def game_over_message
-    console.print_message (winner ? "Congratulations #{@current_player}!" : 'Draw!')
+  def winner
+    @current_player if rules.winning_combination?
   end
 end

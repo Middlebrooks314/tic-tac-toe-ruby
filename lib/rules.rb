@@ -2,6 +2,9 @@ require_relative 'board'
 require_relative 'game'
 
 class Rules
+  def initialize(board)
+    @board = board
+  end
 
   WINNING_COMBOS = [
     [0, 1, 2],
@@ -14,19 +17,19 @@ class Rules
     [2, 4, 6]
 ]
 
-  def game_over?(board)
-    winning_combination?(board) || check_for_draw?(board)
+  def game_over?
+    winning_combination? || check_for_draw?
   end
 
-  def winning_combination?(board)
+  def winning_combination?
     WINNING_COMBOS.any? do |x, y, z|
-      board.position_taken?(x) &&
-      board.squares[x] == board.squares[y] &&
-      board.squares[x] == board.squares[z]
+      @board.position_taken?(x) &&
+      @board.squares[x] == @board.squares[y] &&
+      @board.squares[x] == @board.squares[z]
     end
   end
 
-  def check_for_draw?(board)
-    winning_combination?(board) == false && board.full? == true
+  def check_for_draw?
+    winning_combination? == false && @board.full? == true
   end
 end
