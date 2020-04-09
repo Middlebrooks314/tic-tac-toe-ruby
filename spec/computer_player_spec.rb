@@ -2,7 +2,7 @@ require 'require_all'
 require_all 'lib'
 require_relative './fake_console.rb'
 
-describe HumanPlayer do
+describe ComputerPlayer do
   it 'initializes a computer player with a mark' do
     console = FakeConsole.new
     board = Board.new

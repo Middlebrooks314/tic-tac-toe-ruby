@@ -11,7 +11,6 @@ class ComputerPlayer
     @display.make_move_message(@mark)
     index = retrieve_computer_index
     computer_is_thinking
-    @display.computer_move(index + 1)
     @board.valid_move?(index) ? @board.mark(index, @mark) : move
   end
 

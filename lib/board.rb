@@ -17,7 +17,7 @@ class Board
 
   def available_moves
     open_squares = []
-    @squares.each_with_index {|_value, index|  open_squares << index if !position_taken?(index)}
+    @squares.each_with_index {|_value, index|  open_squares << index unless position_taken?(index)}
     open_squares
   end
 
