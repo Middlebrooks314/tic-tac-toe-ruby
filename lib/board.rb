@@ -15,6 +15,12 @@ class Board
     HEREDOC
   end
 
+  def available_moves
+    open_squares = []
+    @squares.each_with_index {|_value, index|  open_squares << index unless position_taken?(index)}
+    open_squares
+  end
+
   def position_taken?(index)
     @squares[index] != ' '
   end

@@ -39,4 +39,22 @@ class Display
   def invalid_mark_message
     @console.print_message('Please enter a single character that is unique')
   end
+
+  def invalid_player_choice
+    @console.print_message('That is not a valid choice. Please try again')
+  end
+
+  def player_choice
+    @console.print_message('Please choose a player type')
+    @console.print_message('1: Human Player')
+    @console.print_message('2: Computer Player')
+  end
+
+  def computer_move(move)
+    @console.print_message(move)
+  end
+
+  def computer_thinking
+    @console.print_message('.....thinking 🤔')
+  end
 end

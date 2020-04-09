@@ -3,7 +3,7 @@ require_relative 'rules'
 require_relative 'human_player'
 
 class Game
-  attr_reader :rules
+  attr_reader :rules, :player_one, :player_two
 
   def initialize(display, rules, player_one, player_two)
     @rules = rules

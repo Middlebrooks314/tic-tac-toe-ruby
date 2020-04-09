@@ -18,7 +18,7 @@ class Rules
 ]
 
   def game_over?
-    winning_combination? || check_for_draw?
+    winning_combination? || draw?
   end
 
   def winning_combination?
@@ -29,7 +29,7 @@ class Rules
     end
   end
 
-  def check_for_draw?
-    winning_combination? == false && @board.full? == true
+  def draw?
+    !winning_combination? && @board.full?
   end
 end

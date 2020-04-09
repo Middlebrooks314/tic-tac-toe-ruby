@@ -255,4 +255,19 @@ describe '#position_taken?' do
       expect(board.valid_move?(11)).to eq(false)
     end
   end
+
+  describe 'available_moves' do
+    it 'returns a list of available spaces on the board' do
+      board = Board.new
+
+      board.mark(0)
+      board.mark(1)
+      board.mark(3)
+      board.mark(5)
+      board.mark(7)
+      board.mark(9)
+
+      expect(board.available_moves).to eq([2, 4, 6, 8])
+    end
+  end
 end

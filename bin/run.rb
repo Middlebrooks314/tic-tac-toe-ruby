@@ -5,5 +5,8 @@ console = Console.new
 board = Board.new
 rules = Rules.new(board)
 display = Display.new(console, board)
-game_factory = GameFactory.new(board, display, rules)
-game_factory.create_game
+menu = Menu.new(display)
+game_factory = GameFactory.new(board, display, rules, menu)
+game = game_factory.create_game
+
+game.start
