@@ -9,6 +9,7 @@ class GameFactory
   end
 
   def create_game
+    @display.welcome
     player_selections
     player_choices
     Game.new(@display, @rules, @player_one, @player_two)
