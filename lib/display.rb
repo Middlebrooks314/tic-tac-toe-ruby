@@ -44,8 +44,11 @@ class Display
     @console.print_message('That is not a valid choice. Please try again')
   end
 
+  def player_choice_prompt(player_number)
+    @console.print_message("Please choose a player type for the #{player_number} player")
+  end
+
   def player_choice
-    @console.print_message('Please choose a player type')
     @console.print_message('1: Human Player')
     @console.print_message('2: Computer Player')
   end

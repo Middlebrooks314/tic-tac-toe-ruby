@@ -18,8 +18,8 @@ class GameFactory
   private
 
   def player_selections
-    @player_one_option = @menu.player_choice
-    @player_two_option = @menu.player_choice
+    @player_one_option = @menu.player_choice('first')
+    @player_two_option = @menu.player_choice('second')
   end
 
   def player_choices

@@ -14,6 +14,19 @@ describe Display do
     end
   end
 
+  describe 'player_choice_prompt' do
+    it 'asks player 1 and 2 for the player type' do
+      console = FakeConsole.new
+      board = Board.new
+      display = Display.new(console, board)
+
+      display.player_choice_prompt('first')
+
+      expect(console.printed_string).to eq('Please choose a player type for the first player')
+    end
+  end
+  
+
   describe 'make_move_message' do
     it 'asks the current player for their move' do
       console = FakeConsole.new
