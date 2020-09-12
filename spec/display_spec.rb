@@ -46,9 +46,9 @@ describe Display do
       board = Board.new
       display = Display.new(console, board)
 
-      display.setup_mark_message
+      display.setup_mark_message(2)
 
-      expect(console.printed_string).to eq('Please enter a single character to use as your game piece')
+      expect(console.printed_string).to eq('Player 2, please enter a single character to use as your game piece')
     end
   end
 

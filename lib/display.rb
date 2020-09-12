@@ -20,8 +20,8 @@ class Display
     @console.print_message("It is #{current_player.mark}\'s turn")
   end
 
-  def setup_mark_message
-    @console.print_message('Please enter a single character to use as your game piece')
+  def setup_mark_message(player_number)
+    @console.print_message("Player #{player_number}, please enter a single character to use as your game piece")
   end
 
   def winner_message(mark)
@@ -55,6 +55,6 @@ class Display
   end
 
   def computer_thinking
-    @console.print_message('.....thinking 🤔')
+    @console.print_message('The computer is contemplating 🤔.....')
   end
 end

@@ -23,7 +23,7 @@ class GameFactory
 
   def player_choices
     player_one_mark = create_mark
-    player_two_mark = create_mark(player_one_mark)
+    player_two_mark = create_mark(player_one_mark, 2)
     @player_one = create_player(@player_one_option, player_one_mark)
     @player_two = create_player(@player_two_option, player_two_mark)
   end
@@ -38,8 +38,8 @@ class GameFactory
     player
   end
 
-  def create_mark(other_mark = nil)
-    @display.setup_mark_message
+  def create_mark(other_mark = nil, player_number = 1)
+    @display.setup_mark_message(player_number)
     potential_mark = @display.retrieve_user_input
     mark = check_game_mark(potential_mark, other_mark)
     @mark = mark
