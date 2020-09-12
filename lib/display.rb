@@ -21,7 +21,7 @@ class Display
   end
 
   def setup_mark_message(player_number)
-    @console.print_message("Player #{player_number}, please enter a single character to use as your game piece")
+    @console.print_message("Player #{player_number}, please enter a single characters to use as your game piece")
   end
 
   def winner_message(mark)
